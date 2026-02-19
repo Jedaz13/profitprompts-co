@@ -44,6 +44,27 @@ ul, ol {
 }
 
 /* ============================================
+   Niche Accent Color CSS Custom Properties
+   ============================================ */
+.niche-italian {
+  --accent-color: #C75B39;
+  --accent-hover: #a84a2e;
+  --accent-rgb: 199, 91, 57;
+}
+
+.niche-dental {
+  --accent-color: #2563EB;
+  --accent-hover: #1d4ed8;
+  --accent-rgb: 37, 99, 235;
+}
+
+.niche-auto {
+  --accent-color: #DC2626;
+  --accent-hover: #b91c1c;
+  --accent-rgb: 220, 38, 38;
+}
+
+/* ============================================
    Layout
    ============================================ */
 .container {
@@ -127,9 +148,6 @@ p {
 .niche-italian .accent {
   color: #C75B39;
 }
-.niche-italian .order-bump-card {
-  border-color: #C75B39;
-}
 
 .niche-dental .cta-button,
 .niche-dental .sticky-cta {
@@ -141,9 +159,6 @@ p {
 .niche-dental .accent {
   color: #2563EB;
 }
-.niche-dental .order-bump-card {
-  border-color: #2563EB;
-}
 
 .niche-auto .cta-button,
 .niche-auto .sticky-cta {
@@ -154,9 +169,6 @@ p {
 }
 .niche-auto .accent {
   color: #DC2626;
-}
-.niche-auto .order-bump-card {
-  border-color: #DC2626;
 }
 
 /* ============================================
@@ -186,6 +198,12 @@ p {
 
 .cta-button:active {
   transform: translateY(0);
+}
+
+.cta-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media (min-width: 768px) {
@@ -632,74 +650,170 @@ p {
   font-weight: 700;
 }
 
-.pricing-card .cta-button {
-  width: 100%;
-  margin-top: 8px;
-}
-
-/* Order Bump */
-.order-bump-card {
-  padding: 24px;
+/* ============================================
+   Bump Card — Clickable card pattern
+   ============================================ */
+.bump-card {
+  border: 2px solid #E5E7EB;
   border-radius: 12px;
-  border: 2px dashed #E5E7EB;
-  background: #FFFBEB;
-  margin-top: 20px;
+  padding: 20px;
+  margin: 24px 0;
+  cursor: pointer;
+  background: #FFFBF5;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.order-bump-header {
+.bump-card:hover {
+  border-color: #D1D5DB;
+}
+
+.bump-card.checked {
+  border-color: var(--accent-color);
+  background-color: #FFF8F0;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+}
+
+.bump-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.bump-checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid #D1D5DB;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  cursor: pointer;
+  justify-content: center;
+  margin-top: 2px;
+  transition: all 0.2s ease;
 }
 
-.order-bump-header input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: #1A1A2E;
+.bump-card.checked .bump-checkbox {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
-.order-bump-header label {
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
+.bump-checkbox-check {
+  display: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.order-bump-items {
+.bump-card.checked .bump-checkbox-check {
+  display: block;
+}
+
+.bump-content {
+  flex: 1;
+}
+
+.bump-title {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 12px 0 0;
-  padding-left: 32px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.order-bump-item {
-  font-size: 14px;
-  color: #374151;
+.bump-price {
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
-.order-bump-footer {
-  margin-top: 12px;
-  padding-left: 32px;
-  font-size: 14px;
+.bump-description {
   color: #6B7280;
-  font-style: italic;
+  font-size: 0.9rem;
+  margin: 8px 0;
 }
 
-/* Total price display */
-.total-display {
-  text-align: center;
-  margin-top: 20px;
+.bump-items {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  font-size: 0.9rem;
+}
+
+.bump-items li {
+  padding: 2px 0;
+}
+
+.bump-tagline {
+  color: #6B7280;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Order Summary
+   ============================================ */
+.order-summary {
+  background: #F9FAFB;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
   font-size: 15px;
-  color: #6B7280;
 }
 
-.total-display .total-amount {
-  font-size: 20px;
-  font-weight: 800;
-  color: #1A1A2E;
+.summary-line.bump-line {
+  display: none;
+}
+
+.summary-line.bump-line.visible {
+  display: flex;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 2px solid #E5E7EB;
+  font-size: 1.15rem;
+}
+
+/* ============================================
+   Checkout Subtext & Trust
+   ============================================ */
+.checkout-subtext {
+  text-align: center;
+  font-size: 14px;
+  color: #6B7280;
+  margin-top: 12px;
+}
+
+.checkout-trust {
+  text-align: center;
+  padding: 16px 0;
+  color: #6B7280;
+  font-size: 0.85rem;
+}
+
+.card-icons {
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+/* Main CTA in pricing — full width always */
+.pricing .main-cta {
+  width: 100%;
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .pricing .main-cta {
+    width: 100%;
+  }
 }
 
 /* ============================================
@@ -801,6 +915,7 @@ p {
   background: #FFFFFF;
   color: #1A1A2E;
   border-radius: 8px;
+  min-width: auto;
 }
 
 .sticky-cta-button.cta-button:hover {
@@ -1181,4 +1296,285 @@ p {
   border: none;
   border-top: 1px solid #E5E7EB;
   margin: 32px 0;
+}
+
+/* ============================================
+   Credibility Bar ("As Seen In")
+   ============================================ */
+.credibility-bar {
+  padding: 32px 0;
+  background: #F8F9FA;
+  text-align: center;
+}
+
+.credibility-bar .credibility-text {
+  font-size: 14px;
+  color: #6B7280;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.credibility-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  opacity: 0.6;
+}
+
+.credibility-logos span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
+  letter-spacing: 0.5px;
+}
+
+.credibility-logos svg {
+  height: 28px;
+  width: auto;
+  fill: #6B7280;
+}
+
+/* ============================================
+   "Who This Is For / Not For"
+   ============================================ */
+.who-for h2 {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.who-for-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.who-for-col {
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.who-for-col h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.who-for-col.for-you {
+  background: #F0FDF4;
+}
+
+.who-for-col.not-for-you {
+  background: #FEF2F2;
+}
+
+.who-for-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.who-for-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.who-for-item .who-icon {
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.for-you .who-icon { color: #10B981; }
+.not-for-you .who-icon { color: #EF4444; }
+
+@media (min-width: 768px) {
+  .who-for-grid {
+    flex-direction: row;
+  }
+  .who-for-col {
+    flex: 1;
+  }
+}
+
+/* ============================================
+   "The Method Behind It"
+   ============================================ */
+.method h2 {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.method-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.method-card {
+  padding: 24px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-color, #1A1A2E);
+}
+
+.section-alt .method-card {
+  background: #FFFFFF;
+}
+
+.method-card .method-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.method-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.method-card p {
+  font-size: 15px;
+  color: #374151;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.method-card p:last-child {
+  margin-bottom: 0;
+}
+
+.method-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.method-stat {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.method-stat strong {
+  color: #1A1A2E;
+}
+
+.method-stat .stat-source {
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+/* ============================================
+   "About Me" Section
+   ============================================ */
+.about-me h2 {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.about-me-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.about-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color, #1A1A2E);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-photo .photo-placeholder {
+  font-size: 36px;
+  font-weight: 700;
+  color: #6B7280;
+}
+
+.about-label {
+  font-size: 13px;
+  color: #6B7280;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text p {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-signature {
+  font-weight: 700;
+  font-style: italic;
+  color: #1A1A2E;
+}
+
+@media (min-width: 768px) {
+  .about-me-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .about-photo {
+    width: 120px;
+    height: 120px;
+    position: sticky;
+    top: 80px;
+  }
+  .about-photo .photo-placeholder {
+    font-size: 44px;
+  }
+}
+
+/* ============================================
+   Enhanced Guarantee Section
+   ============================================ */
+.enhanced-guarantee {
+  background: #F0FDF4;
+  text-align: center;
+}
+
+.enhanced-guarantee .guarantee-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.enhanced-guarantee .guarantee-shield {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.enhanced-guarantee h2 {
+  margin-bottom: 16px;
+}
+
+.enhanced-guarantee p {
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.7;
 }
