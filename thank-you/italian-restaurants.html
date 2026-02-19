@@ -1,110 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're In! — Italian Restaurant Playbook | ProfitPrompts</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" type="image/png" href="/assets/profit-prompts-favicon.png">
-  <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — Italian Restaurant Playbook | ProfitPrompts</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/profit-prompts-favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KJXG5V6T');</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KJXG5V6T');</script>
+
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --espresso: #1E1410;
+            --espresso-soft: #3D2E26;
+            --terracotta: #C4652A;
+            --terracotta-hover: #D4753A;
+            --olive: #4A6741;
+            --olive-soft: #5B7A50;
+            --warm-gray: #7D7068;
+            --warm-gray-light: #A89E96;
+            --gold: #D4A843;
+            --gold-soft: rgba(212, 168, 67, 0.12);
+            --white: #FFFFFF;
+            --border: #E8E0D6;
+            --section-dark: #1E1410;
+            --input-bg: #F5F0EA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--espresso);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .header {
+            text-align: center;
+            padding: 32px 0 16px;
+        }
+        .header a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+        .hero {
+            text-align: center;
+            padding: 48px 0 40px;
+        }
+        .hero-check {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--olive);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 36px rgba(74, 103, 65, 0.28), 0 2px 8px rgba(74, 103, 65, 0.12);
+            animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .hero-check svg {
+            width: 38px;
+            height: 38px;
+            stroke: #fff;
+            stroke-width: 2.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: drawLine 0.45s 0.35s ease-out forwards;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--espresso);
+            line-height: 1.18;
+            letter-spacing: -0.025em;
+            margin-bottom: 18px;
+            animation: rise 0.6s 0.2s ease both;
+        }
+        .hero h1 span {
+            color: var(--terracotta);
+        }
+        .hero-body {
+            font-size: 1.05rem;
+            color: var(--warm-gray);
+            max-width: 520px;
+            margin: 0 auto 10px;
+            animation: rise 0.6s 0.3s ease both;
+        }
+        .hero-body strong {
+            color: var(--espresso-soft);
+            font-weight: 600;
+        }
+        .hero-sub {
+            font-size: 0.92rem;
+            color: var(--warm-gray-light);
+            animation: rise 0.6s 0.38s ease both;
+        }
+        .bonus-banner {
+            background: var(--section-dark);
+            border-radius: 18px;
+            padding: 38px 34px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            animation: rise 0.6s 0.45s ease both;
+        }
+        .bonus-banner::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -60px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .bonus-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: -40px;
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, rgba(196, 101, 42, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .bonus-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gold-soft);
+            border: 1px solid rgba(212, 168, 67, 0.25);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .bonus-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 4vw, 1.7rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .bonus-banner > p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 26px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+        .bonus-banner > p .value {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .audit-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .audit-feat {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .audit-feat-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(74, 103, 65, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .audit-feat-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--olive-soft);
+            stroke-width: 3;
+            fill: none;
+        }
+        .audit-feat span {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.5;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 34px 32px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 4px rgba(30,20,16,0.03);
+            animation: rise 0.6s 0.55s ease both;
+        }
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--espresso);
+            letter-spacing: -0.02em;
+        }
+        .timeline {
+            padding-left: 34px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--terracotta) 0%, var(--olive) 100%);
+            border-radius: 2px;
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .tl-item:last-child { margin-bottom: 0; }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+        }
+        .tl-item:nth-child(1)::before {
+            background: var(--terracotta);
+            box-shadow: 0 0 0 2px var(--terracotta);
+        }
+        .tl-item:nth-child(2)::before {
+            background: #D08A3E;
+            box-shadow: 0 0 0 2px #D08A3E;
+        }
+        .tl-item:nth-child(3)::before {
+            background: var(--olive);
+            box-shadow: 0 0 0 2px var(--olive);
+        }
+        .tl-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 4px;
+        }
+        .tl-item:nth-child(1) .tl-label { color: var(--terracotta); }
+        .tl-item:nth-child(2) .tl-label { color: #D08A3E; }
+        .tl-item:nth-child(3) .tl-label { color: var(--olive); }
+        .tl-item h3 {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+        .tl-item p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.55;
+        }
+        .form-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 34px 32px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 4px rgba(30,20,16,0.03);
+            animation: rise 0.6s 0.65s ease both;
+        }
+        .form-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--espresso);
+        }
+        .form-sub {
+            font-size: 0.92rem;
+            color: var(--warm-gray);
+            margin-bottom: 28px;
+        }
+        .field {
+            margin-bottom: 18px;
+        }
+        .field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--espresso-soft);
+            margin-bottom: 5px;
+        }
+        .field label .opt {
+            font-weight: 400;
+            color: var(--warm-gray-light);
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            color: var(--espresso);
+            background: var(--input-bg);
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--terracotta);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(196, 101, 42, 0.08);
+        }
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #BEB4AA;
+        }
+        .field textarea {
+            resize: vertical;
+            min-height: 76px;
+        }
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        @media (max-width: 520px) {
+            .field-row { grid-template-columns: 1fr; }
+            .bonus-banner { padding: 30px 24px; }
+            .card, .form-card { padding: 28px 22px; }
+        }
+        .btn {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 6px;
+        }
+        .btn-primary {
+            background: var(--terracotta);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--terracotta-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 22px rgba(196, 101, 42, 0.28);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        .btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .form-privacy {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--warm-gray-light);
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .form-privacy svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--warm-gray-light);
+            flex-shrink: 0;
+        }
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 24px 0 8px;
+        }
+        .success-msg.show {
+            display: block;
+            animation: rise 0.5s ease both;
+        }
+        .success-msg .big-emoji { font-size: 2.8rem; margin-bottom: 14px; }
+        .success-msg h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .success-msg p {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .refund-strip {
+            text-align: center;
+            padding: 32px 24px;
+            margin-bottom: 12px;
+            animation: rise 0.6s 0.75s ease both;
+        }
+        .refund-strip .refund-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(74, 103, 65, 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .refund-strip .refund-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--olive);
+            fill: none;
+            stroke-width: 1.8;
+        }
+        .refund-strip h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .refund-strip p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            max-width: 480px;
+            margin: 0 auto 16px;
+            line-height: 1.6;
+        }
+        .refund-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--terracotta);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .refund-link:hover {
+            opacity: 0.8;
+        }
+        .refund-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--terracotta);
+            fill: none;
+            stroke-width: 2;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 0 36px;
+            animation: rise 0.6s 0.8s ease both;
+        }
+        .footer p {
+            font-size: 0.78rem;
+            color: var(--warm-gray-light);
+        }
+        .footer a {
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body class="niche-italian">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJXG5V6T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJXG5V6T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="/" class="site-logo">
-        <img src="/assets/protif-prompts-logo.png" alt="ProfitPrompts" height="40">
-      </a>
+<div class="page-wrap">
+    <div class="header">
+        <a href="/">ProfitPrompts</a>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="thankyou-hero section">
     <div class="container">
-      <div class="thankyou-emoji">🎉</div>
-      <h1>You're in! Check your email for instant access.</h1>
-      <p>Your 90-Day Revenue Playbook for Italian Restaurants is on its way to your inbox.</p>
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-check">
+                <svg viewBox="0 0 24 24"><polyline points="5 13 10 18 20 6"/></svg>
+            </div>
+            <h1>Thank you for <span>trusting us</span></h1>
+            <p class="hero-body">
+                Your order is confirmed. Right now we're putting the final touches on your playbook — polishing every prompt, testing every template, and making sure it's <strong>genuinely useful the moment you open it.</strong>
+            </p>
+            <p class="hero-sub">
+                You'll have it in your inbox within the next 2–3 weeks.
+            </p>
+        </div>
+        <!-- BONUS BANNER -->
+        <div class="bonus-banner">
+            <div class="bonus-tag">🎁 Your Free Bonus — $97 Value</div>
+            <h2>We're not leaving you with empty hands</h2>
+            <p>While we finalize your playbook, we'll personally record a video audit of your restaurant's online presence — the same analysis we'd charge <span class="value">$97</span> for as a standalone service. Yours free, because you trusted us early.</p>
+            <div class="audit-features">
+                <div class="audit-feat">
+                    <div class="audit-feat-icon"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 20 6"/></svg></div>
+                    <span><strong style="color:#fff;">Google Business audit</strong> — are you showing up when locals search "Italian restaurant near me"?</span>
+                </div>
+                <div class="audit-feat">
+                    <div class="audit-feat-icon"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 20 6"/></svg></div>
+                    <span><strong style="color:#fff;">Social media review</strong> — what's working and what's quietly costing you customers</span>
+                </div>
+                <div class="audit-feat">
+                    <div class="audit-feat-icon"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 20 6"/></svg></div>
+                    <span><strong style="color:#fff;">Website & online ordering</strong> — quick wins you can fix in 30 minutes</span>
+                </div>
+                <div class="audit-feat">
+                    <div class="audit-feat-icon"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 20 6"/></svg></div>
+                    <span><strong style="color:#fff;">2–3 specific ideas</strong> to fill your slowest night this month</span>
+                </div>
+            </div>
+        </div>
+        <!-- TIMELINE -->
+        <div class="card">
+            <h2>Here's what happens next</h2>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-label">Within 24–48 hours</div>
+                    <h3>Your personal Loom audit arrives</h3>
+                    <p>A 10–15 minute video walkthrough of your restaurant's marketing — what's working, what's not, and 2–3 things you can do today to bring in more customers. No fluff, just actionable stuff.</p>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-label">In the next 2–3 weeks</div>
+                    <h3>Your 90-Day Playbook lands in your inbox</h3>
+                    <p>Every prompt tested. Every template polished. As one of our earliest supporters, you'll also get any updates and additions we make — free, forever.</p>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-label">From day one</div>
+                    <h3>You'll already know what to fix</h3>
+                    <p>The Loom audit alone will give you concrete things to improve right away — so you're not just waiting around. You'll be ahead before the playbook even arrives.</p>
+                </div>
+            </div>
+        </div>
+        <!-- FORM -->
+        <div class="form-card">
+            <h2>Tell us about your restaurant</h2>
+            <p class="form-sub">So your free audit is actually useful — not generic advice you could find on Google.</p>
+            <form id="auditForm">
+                <div class="field-row">
+                    <div class="field">
+                        <label>Your Name</label>
+                        <input type="text" name="name" placeholder="e.g. Marco" required>
+                    </div>
+                    <div class="field">
+                        <label>Restaurant Name</label>
+                        <input type="text" name="restaurant" placeholder="e.g. Bella Napoli" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="you@restaurant.com" required>
+                </div>
+                <div class="field">
+                    <label>Website <span class="opt">(if you have one)</span></label>
+                    <input type="url" name="website" placeholder="https://yourrestaurant.com">
+                </div>
+                <div class="field">
+                    <label>Facebook or Instagram Page</label>
+                    <input type="url" name="social" placeholder="https://facebook.com/yourrestaurant" required>
+                </div>
+                <div class="field">
+                    <label>City & State</label>
+                    <input type="text" name="location" placeholder="e.g. Austin, TX" required>
+                </div>
+                <div class="field">
+                    <label>What's your biggest challenge right now? <span class="opt">(optional but helpful)</span></label>
+                    <textarea name="challenge" placeholder="e.g. Slow weeknights, not enough reviews, not sure if I'm actually profitable..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    Send My Details & Get My Free Audit
+                </button>
+                <div class="form-privacy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    Your info stays between us. We'll never share or sell your details.
+                </div>
+            </form>
+            <div class="success-msg" id="successMsg">
+                <div class="big-emoji">🎉</div>
+                <h3>We've got everything we need!</h3>
+                <p>Check your inbox in the next 24–48 hours for your personal Loom audit. We can't wait to help your restaurant grow.</p>
+            </div>
+        </div>
+        <!-- REFUND OPTION -->
+        <div class="refund-strip">
+            <div class="refund-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3>Don't want to wait?</h3>
+            <p>
+                We completely understand. If you'd rather not wait for the playbook to be finalized, just send us a quick email and we'll refund your full purchase immediately. No questions, no hoops, no hard feelings.
+            </p>
+            <a href="mailto:hello@profitprompts.co?subject=Refund%20Request%20-%20Italian%20Restaurant%20Playbook&body=Hi%20Gedas%2C%0A%0AI'd%20like%20to%20request%20a%20refund%20for%20my%20playbook%20purchase.%0A%0AThanks" class="refund-link">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email hello@profitprompts.co for an instant refund
+            </a>
+        </div>
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>Questions about anything? Email <a href="mailto:hello@profitprompts.co">hello@profitprompts.co</a></p>
+            <p style="margin-top: 6px;">&copy; 2026 ProfitPrompts.co</p>
+        </div>
     </div>
-  </section>
+</div>
 
-  <!-- Next Steps -->
-  <section class="next-steps section section-alt">
-    <div class="container">
-      <h2>Here's what to do next:</h2>
-      <div class="steps-list">
-        <div class="step-item">
-          <span class="step-number">1</span>
-          <span>Check your email (including spam/promotions folders)</span>
-        </div>
-        <div class="step-item">
-          <span class="step-number">2</span>
-          <span>Download the playbook</span>
-        </div>
-        <div class="step-item">
-          <span class="step-number">3</span>
-          <span>Start with Week 1 — it takes just 30 minutes</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider container">
-
-  <!-- Upsell -->
-  <section class="upsell-section section">
-    <div class="container">
-      <div class="upsell-card">
-        <h2>Want us to do it ALL for you?</h2>
-        <p class="upsell-subtitle">Most Italian restaurant owners love the playbook but want someone to handle the execution.</p>
-
-        <h3>Our Done-For-You AI Marketing Service:</h3>
-        <div class="upsell-features">
-          <div class="upsell-feature">
-            <span class="feature-check">&#10003;</span>
-            <span>16 social media posts created and scheduled every month</span>
-          </div>
-          <div class="upsell-feature">
-            <span class="feature-check">&#10003;</span>
-            <span>All Google reviews responded to within 24 hours</span>
-          </div>
-          <div class="upsell-feature">
-            <span class="feature-check">&#10003;</span>
-            <span>Monthly email/SMS campaigns written and sent</span>
-          </div>
-          <div class="upsell-feature">
-            <span class="feature-check">&#10003;</span>
-            <span>Monthly performance report</span>
-          </div>
-        </div>
-
-        <div class="upsell-price">
-          <span class="price-current">$197</span>
-          <span class="price-original">$297</span>
-          <span class="price-note">First month — then $297/month. Cancel anytime.</span>
-        </div>
-
-        <a href="#" class="cta-button">Book a Quick Chat to Get Started</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>Questions? Email <a href="mailto:hello@profitprompts.co">hello@profitprompts.co</a></p>
-      <p>&copy; 2026 ProfitPrompts.co | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
-    </div>
-  </footer>
-
-  <script src="/assets/js/tracking.js"></script>
+<script src="/assets/js/tracking.js"></script>
+<script>
+    var form = document.getElementById('auditForm');
+    var btn = document.getElementById('submitBtn');
+    var success = document.getElementById('successMsg');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btn.classList.add('loading');
+        btn.textContent = 'Sending...';
+        // ──────────────────────────────────────────────
+        // REPLACE THIS with your real form endpoint
+        // Option 1: Formspree (free tier = 50 submissions/month)
+        //   Sign up at formspree.io, create a form, get your ID
+        //
+        // Option 2: Google Forms
+        //   Create a Google Form, get the prefilled link
+        //
+        // Example with Formspree:
+        // var data = new FormData(form);
+        // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        //     method: 'POST',
+        //     body: data,
+        //     headers: { 'Accept': 'application/json' }
+        // }).then(function(response) {
+        //     if (response.ok) {
+        //         form.style.display = 'none';
+        //         success.classList.add('show');
+        //     }
+        // }).catch(function() {
+        //     btn.textContent = 'Something went wrong — try again';
+        //     btn.classList.remove('loading');
+        // });
+        // ──────────────────────────────────────────────
+        // Demo mode — remove this when you connect a real endpoint
+        setTimeout(function() {
+            form.style.display = 'none';
+            success.classList.add('show');
+        }, 1200);
+    });
+</script>
 </body>
 </html>
