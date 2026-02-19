@@ -68,9 +68,10 @@ module.exports = async function handler(req, res) {
     var orderValue = 47;
     if (body.include_starter === true) orderValue += 27;
 
-    var successUrl = 'https://profitprompts.co/thank-you/' + NICHE_PATHS[niche] + '.html'
+    var successUrl = 'https://www.profitprompts.co/thank-you/' + NICHE_PATHS[niche] + '.html'
       + '?session_id={CHECKOUT_SESSION_ID}'
-      + '&value=' + orderValue;
+      + '&value=' + orderValue
+      + '&amount=' + orderValue;
 
     var cancelUrl = 'https://profitprompts.co/' + NICHE_PATHS[niche] + '/';
 
