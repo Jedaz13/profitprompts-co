@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="/assets/profit-prompts-favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -19,24 +19,24 @@
     <style>
         :root {
             --cream: #FAF7F2;
-            --espresso: #1E1410;
-            --espresso-soft: #3D2E26;
-            --terracotta: #C4652A;
-            --terracotta-hover: #D4753A;
+            --espresso: #1A1A2E;
+            --espresso-soft: #374151;
+            --terracotta: #C75B39;
+            --terracotta-hover: #a84a2e;
             --olive: #4A6741;
             --olive-soft: #5B7A50;
-            --warm-gray: #7D7068;
-            --warm-gray-light: #A89E96;
+            --warm-gray: #6B7280;
+            --warm-gray-light: #9CA3AF;
             --gold: #D4A843;
             --gold-soft: rgba(212, 168, 67, 0.12);
             --white: #FFFFFF;
-            --border: #E8E0D6;
-            --section-dark: #1E1410;
+            --border: #E5E7EB;
+            --section-dark: #1A1A2E;
             --input-bg: #F5F0EA;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background: var(--cream);
             color: var(--espresso);
             line-height: 1.65;
@@ -61,15 +61,20 @@
         }
         .header {
             text-align: center;
-            padding: 32px 0 16px;
+            padding: 20px 0 16px;
+            border-bottom: 1px solid var(--border);
         }
         .header a {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--espresso);
+            display: inline-block;
             text-decoration: none;
-            letter-spacing: -0.03em;
+        }
+        .header a img {
+            height: 36px;
+            width: auto;
+        }
+        @media (min-width: 768px) {
+            .header { padding: 24px 0 20px; }
+            .header a img { height: 40px; }
         }
         .hero {
             text-align: center;
@@ -111,7 +116,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: clamp(1.9rem, 5vw, 2.5rem);
             font-weight: 800;
             color: var(--espresso);
@@ -182,7 +187,7 @@
             z-index: 1;
         }
         .bonus-banner h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: clamp(1.4rem, 4vw, 1.7rem);
             font-weight: 700;
             color: #fff;
@@ -248,7 +253,7 @@
             animation: rise 0.6s 0.55s ease both;
         }
         .card h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 1.45rem;
             font-weight: 700;
             margin-bottom: 24px;
@@ -327,7 +332,7 @@
             animation: rise 0.6s 0.65s ease both;
         }
         .form-card h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 1.45rem;
             font-weight: 700;
             margin-bottom: 4px;
@@ -358,7 +363,7 @@
             padding: 12px 16px;
             border: 1.5px solid var(--border);
             border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 0.92rem;
             color: var(--espresso);
             background: var(--input-bg);
@@ -369,7 +374,7 @@
         .field textarea:focus {
             border-color: var(--terracotta);
             background: var(--white);
-            box-shadow: 0 0 0 3px rgba(196, 101, 42, 0.08);
+            box-shadow: 0 0 0 3px rgba(199, 91, 57, 0.08);
         }
         .field input::placeholder,
         .field textarea::placeholder {
@@ -394,7 +399,7 @@
             padding: 16px 24px;
             border: none;
             border-radius: 12px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 1.02rem;
             font-weight: 600;
             cursor: pointer;
@@ -408,7 +413,7 @@
         .btn-primary:hover {
             background: var(--terracotta-hover);
             transform: translateY(-1px);
-            box-shadow: 0 6px 22px rgba(196, 101, 42, 0.28);
+            box-shadow: 0 6px 22px rgba(199, 91, 57, 0.28);
         }
         .btn-primary:active {
             transform: translateY(0);
@@ -444,7 +449,7 @@
         }
         .success-msg .big-emoji { font-size: 2.8rem; margin-bottom: 14px; }
         .success-msg h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 8px;
@@ -479,7 +484,7 @@
             stroke-width: 1.8;
         }
         .refund-strip h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--espresso);
@@ -533,7 +538,9 @@
 
 <div class="page-wrap">
     <div class="header">
-        <a href="/">ProfitPrompts</a>
+        <a href="/">
+            <img src="/assets/protif-prompts-logo.png" alt="ProfitPrompts" height="40">
+        </a>
     </div>
     <div class="container">
         <!-- HERO -->
