@@ -69,17 +69,28 @@ module.exports = async function handler(req, res) {
 
     var cancelUrl = 'https://profitprompts.co/' + NICHE_PATHS[niche] + '/';
 
-    var session = await stripe.checkout.sessions.create({
+    // Build session options
+    var sessionOptions = {
       mode: 'payment',
       line_items: lineItems,
-      allow_promotion_codes: true,
       success_url: successUrl,
       cancel_url: cancelUrl,
       metadata: {
         niche: niche,
         include_starter: String(body.include_starter || false)
       }
-    });
+    };
+
+    // If a coupon code is passed, apply it directly via discounts (works with coupon IDs).
+    // Otherwise, enable the promotion code field on the checkout page (requires
+    // Promotion Code objects in Stripe, not just Coupons).
+    if (body.coupon) {
+      sessionOptions.discounts = [{ coupon: body.coupon }];
+    } else {
+      sessionOptions.allow_promotion_codes = true;
+    }
+
+    var session = await stripe.checkout.sessions.create(sessionOptions);
 
     return res.status(200).json({ url: session.url });
   } catch (error) {

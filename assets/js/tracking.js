@@ -127,10 +127,17 @@ function handleCheckout() {
   }
 
   /* POST to serverless API */
+  var urlParams = new URLSearchParams(window.location.search);
+  var coupon = urlParams.get('coupon');
+
   var payload = {
     niche: niche,
     include_starter: bump1Active
   };
+
+  if (coupon) {
+    payload.coupon = coupon;
+  }
 
   fetch('/api/create-checkout', {
     method: 'POST',
