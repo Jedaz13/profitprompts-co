@@ -774,6 +774,35 @@ p {
   font-size: 0.85rem;
 }
 
+.bump-body {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.bump-image {
+  flex-shrink: 0;
+  width: 120px;
+}
+
+.bump-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.bump-details {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .bump-image {
+    width: 100px;
+  }
+}
+
 /* ============================================
    Order Summary
    ============================================ */
@@ -877,6 +906,15 @@ p {
 /* ============================================
    Footer
    ============================================ */
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.footer-logo img {
+  opacity: 0.7;
+}
+
 .site-footer {
   padding: 32px 0;
   text-align: center;
