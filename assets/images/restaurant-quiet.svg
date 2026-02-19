@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="1600" height="400">
+  <defs>
+    <radialGradient id="glow1" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#2a3a5c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a5a7a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#4a5a7a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2233"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="400" fill="#0d1117"/>
+
+  <!-- Floor -->
+  <rect x="0" y="280" width="1600" height="120" fill="url(#floorGrad)"/>
+  <line x1="0" y1="280" x2="1600" y2="280" stroke="#1e2d44" stroke-width="1" opacity="0.4"/>
+
+  <!-- Back wall subtle paneling -->
+  <rect x="0" y="0" width="1600" height="280" fill="#0d1117"/>
+  <rect x="80" y="40" width="200" height="200" rx="3" fill="none" stroke="#1a2233" stroke-width="1"/>
+  <rect x="320" y="40" width="200" height="200" rx="3" fill="none" stroke="#1a2233" stroke-width="1"/>
+  <rect x="1080" y="40" width="200" height="200" rx="3" fill="none" stroke="#1a2233" stroke-width="1"/>
+  <rect x="1320" y="40" width="200" height="200" rx="3" fill="none" stroke="#1a2233" stroke-width="1"/>
+
+  <!-- Ambient glow from ceiling -->
+  <rect x="0" y="0" width="1600" height="400" fill="url(#glow1)"/>
+
+  <!-- Pendant light 1 -->
+  <line x1="300" y1="0" x2="300" y2="80" stroke="#2a3a5c" stroke-width="1"/>
+  <polygon points="290,80 310,80 316,95 284,95" fill="#1e2d44"/>
+  <circle cx="300" cy="88" r="4" fill="#4a6a9a" opacity="0.6"/>
+  <circle cx="300" cy="100" r="50" fill="url(#lampGlow)"/>
+
+  <!-- Pendant light 2 -->
+  <line x1="800" y1="0" x2="800" y2="70" stroke="#2a3a5c" stroke-width="1"/>
+  <polygon points="790,70 810,70 816,85 784,85" fill="#1e2d44"/>
+  <circle cx="800" cy="78" r="4" fill="#4a6a9a" opacity="0.6"/>
+  <circle cx="800" cy="90" r="50" fill="url(#lampGlow)"/>
+
+  <!-- Pendant light 3 -->
+  <line x1="1300" y1="0" x2="1300" y2="75" stroke="#2a3a5c" stroke-width="1"/>
+  <polygon points="1290,75 1310,75 1316,90 1284,90" fill="#1e2d44"/>
+  <circle cx="1300" cy="83" r="4" fill="#4a6a9a" opacity="0.6"/>
+  <circle cx="1300" cy="95" r="50" fill="url(#lampGlow)"/>
+
+  <!-- Table 1 (round, left) -->
+  <ellipse cx="200" cy="310" rx="55" ry="12" fill="#1a2233" stroke="#24344a" stroke-width="1"/>
+  <rect x="196" y="310" width="8" height="60" fill="#1a2233"/>
+  <!-- Chair left -->
+  <rect x="130" y="295" width="14" height="30" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <!-- Chair right -->
+  <rect x="256" y="295" width="14" height="30" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+
+  <!-- Table 2 (round, center-left) -->
+  <ellipse cx="520" cy="320" rx="50" ry="11" fill="#1a2233" stroke="#24344a" stroke-width="1"/>
+  <rect x="516" y="320" width="8" height="55" fill="#1a2233"/>
+  <!-- Chairs -->
+  <rect x="455" y="305" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="572" y="305" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+
+  <!-- Table 3 (rectangular, center) -->
+  <rect x="730" y="300" width="140" height="20" rx="4" fill="#1a2233" stroke="#24344a" stroke-width="1"/>
+  <rect x="760" y="320" width="8" height="50" fill="#1a2233"/>
+  <rect x="832" y="320" width="8" height="50" fill="#1a2233"/>
+  <!-- Chairs -->
+  <rect x="715" y="288" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="760" y="288" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="828" y="288" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="872" y="288" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+
+  <!-- Table 4 (round, right) -->
+  <ellipse cx="1100" cy="315" rx="52" ry="11" fill="#1a2233" stroke="#24344a" stroke-width="1"/>
+  <rect x="1096" y="315" width="8" height="58" fill="#1a2233"/>
+  <rect x="1035" y="300" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="1152" y="300" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+
+  <!-- Table 5 (far right) -->
+  <ellipse cx="1400" cy="308" rx="48" ry="10" fill="#1a2233" stroke="#24344a" stroke-width="1"/>
+  <rect x="1396" y="308" width="8" height="55" fill="#1a2233"/>
+  <rect x="1340" y="293" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+  <rect x="1447" y="293" width="13" height="28" rx="3" fill="#1a2233" stroke="#24344a" stroke-width="0.5"/>
+
+  <!-- Subtle wine glass on table 1 -->
+  <line x1="210" y1="302" x2="210" y2="308" stroke="#2a3a5c" stroke-width="1"/>
+  <ellipse cx="210" cy="301" rx="4" ry="6" fill="none" stroke="#2a3a5c" stroke-width="0.7"/>
+
+  <!-- Subtle napkin on table 3 -->
+  <rect x="780" y="294" width="10" height="8" fill="#1e2d44" opacity="0.5"/>
+
+  <!-- Floor reflections -->
+  <ellipse cx="300" cy="370" rx="80" ry="8" fill="#1a2233" opacity="0.3"/>
+  <ellipse cx="800" cy="375" rx="80" ry="8" fill="#1a2233" opacity="0.3"/>
+  <ellipse cx="1300" cy="372" rx="80" ry="8" fill="#1a2233" opacity="0.3"/>
+
+  <!-- Very subtle vignette overlay -->
+  <rect x="0" y="0" width="1600" height="400" fill="url(#glow1)" opacity="0.2"/>
+</svg>

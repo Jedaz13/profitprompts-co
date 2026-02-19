@@ -1330,7 +1330,7 @@ p {
    Credibility Bar ("As Seen In")
    ============================================ */
 .credibility-bar {
-  padding: 32px 0;
+  padding: 20px 0;
   background: #F8F9FA;
   text-align: center;
 }
@@ -1338,8 +1338,9 @@ p {
 .credibility-bar .credibility-text {
   font-size: 14px;
   color: #6B7280;
-  letter-spacing: 0.5px;
-  margin-bottom: 20px;
+  letter-spacing: 0.3px;
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 .credibility-logos {
@@ -1605,4 +1606,322 @@ p {
   font-size: 16px;
   color: #374151;
   line-height: 1.7;
+}
+
+.enhanced-guarantee .guarantee-signature {
+  font-weight: 700;
+  font-style: italic;
+  color: #1A1A2E;
+  margin-top: 8px;
+}
+
+/* ============================================
+   Hero — Subheadline Small (POS line)
+   ============================================ */
+.hero .subheadline-small {
+  font-size: 15px;
+  color: #9CA3AF;
+  font-style: italic;
+  margin: 0 auto 28px;
+  max-width: 600px;
+}
+
+/* ============================================
+   Scene Images (Full-Width Atmospheric)
+   ============================================ */
+.scene-image {
+  position: relative;
+  width: 100%;
+  max-height: 200px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.scene-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.scene-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scene-image-overlay-warm {
+  background: rgba(199, 91, 57, 0.08);
+}
+
+@media (min-width: 768px) {
+  .scene-image {
+    max-height: 320px;
+  }
+  .scene-image img {
+    height: 320px;
+  }
+}
+
+/* ============================================
+   Profitability Section (Dark Background)
+   ============================================ */
+.profitability {
+  background: #1a1a2e;
+  color: #FFFFFF;
+}
+
+.profitability h2 {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.profitability p {
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.profitability strong {
+  color: #FFFFFF;
+}
+
+.profitability-highlight {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 16px 0;
+  line-height: 1.4;
+}
+
+.profitability-points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+
+.profitability-point {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+}
+
+.profitability-arrow {
+  flex-shrink: 0;
+  color: var(--accent-color, #C75B39);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ============================================
+   Social Proof — Data-Backed Cards
+   ============================================ */
+.social-proof h2 {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.proof-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.proof-card {
+  padding: 24px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  border-top: 3px solid #0EA5E9;
+}
+
+.proof-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.proof-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #1A1A2E;
+}
+
+.proof-card p {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.proof-source {
+  font-size: 12px;
+  color: #9CA3AF;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .proof-grid {
+    flex-direction: row;
+  }
+  .proof-card {
+    flex: 1;
+  }
+}
+
+/* ============================================
+   About Me — Title under signature
+   ============================================ */
+.about-title {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #6B7280;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ============================================
+   Product Visualization + Bonuses
+   ============================================ */
+.product-viz h2 {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.product-mockup-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.product-mockup-img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.product-main {
+  text-align: center;
+  padding: 24px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 2px solid var(--accent-color, #C75B39);
+  margin-bottom: 24px;
+}
+
+.product-main-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.product-main h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.product-value {
+  font-size: 14px;
+  color: #6B7280;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-main p:last-child {
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #374151;
+}
+
+.bonuses-intro {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1A1A2E;
+}
+
+.bonus-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.bonus-card {
+  padding: 20px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+}
+
+.bonus-badge {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-color, #C75B39);
+  margin-bottom: 8px;
+}
+
+.bonus-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.bonus-value {
+  font-size: 13px;
+  font-weight: 400;
+  color: #9CA3AF;
+  text-decoration: line-through;
+}
+
+.bonus-card p {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.value-stack {
+  text-align: center;
+  padding: 20px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 2px solid #E5E7EB;
+}
+
+.value-stack-total {
+  font-size: 16px;
+  color: #6B7280;
+  margin-bottom: 4px;
+}
+
+.value-strikethrough {
+  text-decoration: line-through;
+}
+
+.value-stack-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent-color, #C75B39);
+  margin-bottom: 0;
+}
+
+.value-stack-price strong {
+  color: inherit;
 }
