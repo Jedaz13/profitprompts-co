@@ -920,6 +920,8 @@ p {
 }
 
 .footer-logo img {
+  height: 24px;
+  width: auto;
   opacity: 0.7;
 }
 
