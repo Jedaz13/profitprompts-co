@@ -88,6 +88,34 @@ ul, ol {
 }
 
 /* ============================================
+   Site Header / Logo
+   ============================================ */
+.site-header {
+  padding: 16px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.site-logo {
+  display: inline-block;
+}
+
+.site-logo img {
+  height: 36px;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: 20px 0;
+  }
+
+  .site-logo img {
+    height: 40px;
+  }
+}
+
+/* ============================================
    Typography
    ============================================ */
 h1, h2, h3, h4 {
