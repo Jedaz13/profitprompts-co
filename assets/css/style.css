@@ -877,6 +877,15 @@ p {
 /* ============================================
    Footer
    ============================================ */
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.footer-logo img {
+  opacity: 0.7;
+}
+
 .site-footer {
   padding: 32px 0;
   text-align: center;
