@@ -666,6 +666,36 @@
 </div>
 
 <script src="/assets/js/tracking.js"></script>
+
+<!-- Purchase tracking — fetch real amount from Stripe session -->
+<script>
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    var sessionId = params.get('session_id');
+
+    if (!sessionId) return;
+
+    fetch('/api/get-session?session_id=' + encodeURIComponent(sessionId))
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'purchase',
+          value: data.amount,
+          currency: data.currency
+        });
+      })
+      .catch(function() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'purchase',
+          value: 47,
+          currency: 'USD'
+        });
+      });
+})();
+</script>
+
 <script>
     var form = document.getElementById('auditForm');
     var btn = document.getElementById('submitBtn');

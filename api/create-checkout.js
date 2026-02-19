@@ -61,17 +61,11 @@ module.exports = async function handler(req, res) {
       lineItems.push({ price: STARTER_KIT_PRICES[niche], quantity: 1 });
     }
 
-    // Build success URL — pass order value for thank-you page analytics
+    // Build success URL — Stripe replaces {CHECKOUT_SESSION_ID} with the real session ID
     // IMPORTANT: use string concatenation, NOT URLSearchParams
-    // Stripe replaces {CHECKOUT_SESSION_ID} with the real session ID
     // URLSearchParams would encode the braces and break it
-    var orderValue = 47;
-    if (body.include_starter === true) orderValue += 27;
-
     var successUrl = 'https://www.profitprompts.co/thank-you/' + NICHE_PATHS[niche] + '.html'
-      + '?session_id={CHECKOUT_SESSION_ID}'
-      + '&value=' + orderValue
-      + '&amount=' + orderValue;
+      + '?session_id={CHECKOUT_SESSION_ID}';
 
     var cancelUrl = 'https://profitprompts.co/' + NICHE_PATHS[niche] + '/';
 
