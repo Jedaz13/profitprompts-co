@@ -61,7 +61,7 @@ if (getPageType() === 'thank_you') {
 var bumpState = { 1: false };
 var checkoutInProgress = false;
 var BASE_PRICE = 47;
-var BUMP_PRICES = { 1: 37 };
+var BUMP_PRICES = { 1: 27 };
 
 /* Toggle bump — entire card is clickable */
 function toggleBump(num) {

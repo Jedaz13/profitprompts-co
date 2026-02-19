@@ -66,7 +66,7 @@ module.exports = async function handler(req, res) {
     // Stripe replaces {CHECKOUT_SESSION_ID} with the real session ID
     // URLSearchParams would encode the braces and break it
     var orderValue = 47;
-    if (body.include_starter === true) orderValue += 37;
+    if (body.include_starter === true) orderValue += 27;
 
     var successUrl = 'https://profitprompts.co/thank-you/' + NICHE_PATHS[niche] + '.html'
       + '?session_id={CHECKOUT_SESSION_ID}'
