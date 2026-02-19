@@ -4,22 +4,6 @@
 
 window.dataLayer = window.dataLayer || [];
 
-/* ---------- Stripe Payment Link Placeholders ---------- */
-var STRIPE_LINKS = {
-  italian: {
-    playbook: 'https://buy.stripe.com/ITALIAN_47',
-    bundle: 'https://buy.stripe.com/ITALIAN_84'
-  },
-  dental: {
-    playbook: 'https://buy.stripe.com/DENTAL_47',
-    bundle: 'https://buy.stripe.com/DENTAL_84'
-  },
-  auto: {
-    playbook: 'https://buy.stripe.com/AUTO_47',
-    bundle: 'https://buy.stripe.com/AUTO_84'
-  }
-};
-
 /* ---------- Niche Detection ---------- */
 function getNiche() {
   var path = window.location.pathname;
@@ -46,12 +30,6 @@ function getPageType() {
   return 'landing_page';
 }
 
-/* ---------- Order Value from URL ---------- */
-function getOrderValue() {
-  var params = new URLSearchParams(window.location.search);
-  return params.get('bump') === 'true' ? 84.00 : 47.00;
-}
-
 /* ---------- Page View Event ---------- */
 dataLayer.push({
   'event': 'page_view',
@@ -62,64 +40,167 @@ dataLayer.push({
 
 /* ---------- Purchase Event (Thank You Pages) ---------- */
 if (getPageType() === 'thank_you') {
+  var params = new URLSearchParams(window.location.search);
+  var sessionId = params.get('session_id') || 'txn_' + Date.now();
+  var orderValue = parseFloat(params.get('value')) || 47.00;
+
   dataLayer.push({
     'event': 'purchase',
     'niche': getNiche(),
-    'value': getOrderValue(),
+    'value': orderValue,
     'currency': 'USD',
-    'transaction_id': new URLSearchParams(window.location.search).get('session_id') || 'txn_' + Date.now()
+    'transaction_id': sessionId
   });
 }
 
-/* ---------- DOM Ready ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-  var nicheKey = getNicheKey();
+/* ============================================
+   CHECKOUT STATE & BUMP MANAGEMENT
+   Uses same proven pattern as Gut Healing Academy
+   ============================================ */
 
-  /* --- CTA Click Tracking --- */
-  document.querySelectorAll('.cta-button').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var href = btn.getAttribute('href') || '';
-      var isBundle = href.includes('_84');
-      dataLayer.push({
-        'event': 'begin_checkout',
-        'niche': getNiche(),
-        'value': isBundle ? 84.00 : 47.00,
-        'currency': 'USD'
-      });
+var bumpState = { 1: false };
+var checkoutInProgress = false;
+var BASE_PRICE = 47;
+var BUMP_PRICES = { 1: 37 };
+
+/* Toggle bump — entire card is clickable */
+function toggleBump(num) {
+  bumpState[num] = !bumpState[num];
+  var card = document.getElementById('bump' + num);
+  if (card) card.classList.toggle('checked', bumpState[num]);
+  updateOrderSummary();
+
+  if (bumpState[num]) {
+    dataLayer.push({
+      'event': 'add_to_cart',
+      'product': 'starter_kit_' + getNiche(),
+      'value': BUMP_PRICES[num],
+      'currency': 'USD'
     });
+  }
+}
+
+/* Update all price displays across the page */
+function updateOrderSummary() {
+  var total = BASE_PRICE;
+  if (bumpState[1]) total += BUMP_PRICES[1];
+
+  var summaryBump1 = document.getElementById('summaryBump1');
+  if (summaryBump1) summaryBump1.classList.toggle('visible', bumpState[1]);
+
+  var orderTotal = document.getElementById('orderTotal');
+  if (orderTotal) orderTotal.textContent = '$' + total;
+
+  var ctaButton = document.getElementById('ctaButton');
+  if (ctaButton) ctaButton.textContent = 'Get Instant Access \u2014 $' + total;
+
+  var stickyPrice = document.getElementById('sticky-price');
+  if (stickyPrice) stickyPrice.textContent = '$' + total;
+}
+
+/* Checkout handler — reads bump state from DOM at checkout time */
+function handleCheckout() {
+  if (checkoutInProgress) return;
+  checkoutInProgress = true;
+
+  var niche = getNicheKey();
+
+  /* Read bump state from DOM (not just JS variable) — proven more reliable */
+  var bump1El = document.getElementById('bump1');
+  var bump1Active = bump1El ? bump1El.classList.contains('checked') : false;
+  var totalValue = BASE_PRICE + (bump1Active ? BUMP_PRICES[1] : 0);
+
+  /* Fire GTM event */
+  dataLayer.push({
+    'event': 'begin_checkout',
+    'niche': getNiche(),
+    'include_starter': bump1Active,
+    'value': totalValue,
+    'currency': 'USD'
   });
 
-  /* --- Order Bump Toggle --- */
-  var orderBump = document.getElementById('order-bump');
-  if (orderBump && nicheKey) {
-    orderBump.addEventListener('change', function() {
-      var link = this.checked ? STRIPE_LINKS[nicheKey].bundle : STRIPE_LINKS[nicheKey].playbook;
+  /* Update button to show loading */
+  var btn = document.getElementById('ctaButton');
+  if (btn) {
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+  }
 
-      // Update ALL CTA buttons on the page
-      document.querySelectorAll('.cta-button').forEach(function(btn) {
-        btn.setAttribute('href', link);
+  /* POST to serverless API */
+  var payload = {
+    niche: niche,
+    include_starter: bump1Active
+  };
+
+  fetch('/api/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'No URL returned');
+    }
+  })
+  .catch(function(err) {
+    console.error('Checkout error:', err);
+    fallbackToPaymentLink(niche);
+  });
+}
+
+/* Fallback Payment Links — if API fails, user can still buy (without bumps) */
+var FALLBACK_LINKS = {
+  italian: 'https://buy.stripe.com/ITALIAN_FALLBACK',
+  dental: 'https://buy.stripe.com/DENTAL_FALLBACK',
+  auto: 'https://buy.stripe.com/AUTO_FALLBACK'
+};
+
+function fallbackToPaymentLink(niche) {
+  checkoutInProgress = false;
+  var btn = document.getElementById('ctaButton');
+  if (btn) {
+    var total = BASE_PRICE + (bumpState[1] ? BUMP_PRICES[1] : 0);
+    btn.textContent = 'Get Instant Access \u2014 $' + total;
+    btn.disabled = false;
+  }
+
+  if (FALLBACK_LINKS[niche]) {
+    window.location.href = FALLBACK_LINKS[niche];
+  } else {
+    alert('Something went wrong. Please try again or email hello@profitprompts.co');
+  }
+}
+
+/* Browser back/forward cache recovery */
+window.addEventListener('pageshow', function(event) {
+  if (event.persisted) {
+    checkoutInProgress = false;
+    var bump1El = document.getElementById('bump1');
+    if (bump1El) {
+      bumpState[1] = bump1El.classList.contains('checked');
+    }
+    updateOrderSummary();
+    var btn = document.getElementById('ctaButton');
+    if (btn) btn.disabled = false;
+  }
+});
+
+/* ---------- DOM Ready ---------- */
+document.addEventListener('DOMContentLoaded', function() {
+
+  /* --- Other CTAs scroll to pricing section (landing pages only) --- */
+  if (getPageType() === 'landing_page') {
+    document.querySelectorAll('.cta-button:not(.main-cta)').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById('order-summary');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       });
-
-      // Update price displays
-      var totalPrice = document.getElementById('total-price');
-      if (totalPrice) {
-        totalPrice.textContent = this.checked ? '$84' : '$47';
-      }
-
-      var stickyPrice = document.getElementById('sticky-price');
-      if (stickyPrice) {
-        stickyPrice.textContent = this.checked ? '$84' : '$47';
-      }
-
-      // Fire GTM event when bump is added
-      if (this.checked) {
-        dataLayer.push({
-          'event': 'add_to_cart',
-          'product': 'starter_kit_' + getNiche(),
-          'value': 37.00,
-          'currency': 'USD'
-        });
-      }
     });
   }
 
@@ -169,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Close on overlay click
     exitPopup.addEventListener('click', function(e) {
       if (e.target === exitPopup) {
         exitPopup.classList.remove('visible');
