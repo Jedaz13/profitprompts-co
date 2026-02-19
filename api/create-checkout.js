@@ -2,13 +2,13 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Niche → Stripe Price IDs (replace with real price_xxx IDs from Stripe Dashboard)
 const PLAYBOOK_PRICES = {
-  'italian': 'PRICE_ITALIAN_PLAYBOOK',
+  'italian': 'price_1T2VS1Q4GryIFzCjJ21xrBII',
   'dental': 'PRICE_DENTAL_PLAYBOOK',
   'auto': 'PRICE_AUTO_PLAYBOOK'
 };
 
 const STARTER_KIT_PRICES = {
-  'italian': 'PRICE_ITALIAN_STARTER',
+  'italian': 'price_1T2VSRQ4GryIFzCjfFmsex0m',
   'dental': 'PRICE_DENTAL_STARTER',
   'auto': 'PRICE_AUTO_STARTER'
 };
